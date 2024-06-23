@@ -27,11 +27,11 @@ Parameter settings
 
 We set $`\epsilon=0.1`$ for each assumption. We set Patchsize = 64 for PC-DRUNet, and 128 for others. The average value and the standard derivations of the spectral norms (such as $`||2J-I||_*`$ for MMO, $`||J||_*`$ for NE-DRUNet) evaluated at different images after training is denoted by Mean and Std, respectively. The balancing parameter r in the loss function is chosen to be large enough, such that, $`Mean + 3  Std \le 1,`$ and small enough, such that the denoising performace is least compromised.
 
-Conclusion
+Results
 ----
-Overall, this repo provides a more accurate evaluation for each denoiser. We will continue updating the denoising performance results, and the PnP restoration results. This will serve as a new baseline. 
 
-Denoising performance on CBSD68 in PSNR values
+
+Table 1. Denoising performance on CBSD68 in PSNR values
 ---
 
 $`\sigma`$ | DRUNet  | MMO | NE-DRUNet| SPC-DRUNet ($`k=0.5`$) | SPC-DRUNet ($`k=0.6`$) | SPC-DRUNet ($`k=0.7`$) |  SPC-DRUNet ($`k=0.8`$) |  SPC-DRUNet ($`k=0.9`$) |  PC-DRUNet ($`k=1`$)
@@ -43,6 +43,13 @@ Spectral Term |  \ | $` \|\|2J-I\|\|_* `$ | $`\|\|J\|\|_*`$ | $`\|\|0.5I+0.5J\|\
 $`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.02|0.02|0.001|0.01
 $`Mean`$ | \ |  0.932    | 0.933 | 0.976   | 0.980 | 0.981 | 0.983| 0.971|0.9750
 $`Std`$ |  \ |     0.0454| 0.0197| 0.0157| 0.0168  |0.0153 |0.0132|0.0536|0.0752
+
+
+It can be seen in Table 1 that, when $`k`$ gets larger, the assumption gets weaker, and the denoising performance gets better. When $`k\ge0.9`$, the denoisers have a satisfying denoising performance.
+
+
+Overall, this repo provides a more accurate evaluation for each denoiser. We will continue updating the denoising performance results, and the PnP restoration results. This will serve as a new baseline. 
+
 
 Update 20240623
 ----
