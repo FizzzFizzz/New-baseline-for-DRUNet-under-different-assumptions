@@ -31,17 +31,18 @@ Conclusion
 ----
 Overall, this repo provides a more accurate evaluation for each denoiser. We will continue updating the denoising performance results, and the PnP restoration results. This will serve as a new baseline. 
 
-Denoising performance on CBSD68
+Denoising performance on CBSD68 in PSNR values
 ---
 
 $`\sigma`$ | DRUNet  | MMO | NE-DRUNet| SPC-DRUNet ($`k=0.5`$) | SPC-DRUNet ($`k=0.6`$) | SPC-DRUNet ($`k=0.7`$) |  SPC-DRUNet ($`k=0.8`$) |  SPC-DRUNet ($`k=0.9`$) |  PC-DRUNet ($`k=1`$)
 ---- | ----- | ------ | ---- | ----- | ------  |---- | ----- | ------  | ------ 
-15 | 34.14 |                   |32.54|
-25 | 31.54|                    |30.12|
-40| 29.33 |                    |28.00|
-Spectral Term| \   | $`||2J-I||_*`$ | $`||J||`$ | 
-$`Mean`$ | \ |      | 0.933 | 
-$`Std`$ | \  |      | 0.01967|
+15 | 34.14 |         32.21          |32.54| 33.30|33.43|33.48|33.66|33.67|33.96
+25 | 31.54|         29.99           |30.12| 30.55|30.62|30.94|31.05|31.36|31.44
+40| 29.33 |           27.87         |28.00| 28.43|28.43|28.70|28.84|28.96|29.14
+Spectral Term |  \ | $` \|\|2J-I\|\|_* `$ | $`\|\|J\|\|_*`$ | $`\|\|0.5I+0.5J\|\|_*`$ |  $`\|\|0.6I+0.4J\|\|_*`$ |$`\|\|0.7I+0.3J\|\|_*`$ |$`\|\|0.8I+0.2J\|\|_*`$ |$`\|\|0.9I+0.1J\|\|_*`$ | $`\|\|(J-10I)^{-1}(J+8I)\|\|_*`$ 
+$`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.02|0.02|0.001|0.01
+$`Mean`$ | \ |  0.932    | 0.933 | 0.976   | 0.980 | 0.981 | 0.983| 0.971|0.9750
+$`Std`$ |  \ |     0.0454| 0.0197| 0.0157| 0.0168  |0.0153 |0.0132|0.0536|0.0752
 
 Update 20240623
 ----
