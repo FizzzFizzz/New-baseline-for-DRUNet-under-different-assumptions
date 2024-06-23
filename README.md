@@ -8,7 +8,7 @@ We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with diff
 A new spectral term for PC-DRUNet
 ----
 
-In this repo, different from the original paper [ICML](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ), each method is trained with the (modified) power iterative method with 15 iterations. The trainset are DIV2k, contains 800 images. The loss functions in the paper [ICML](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ) for SPC-DRUNet and PC-DRUNet are 
+In this repo, different from the original paper [ICML](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ), each method is trained with the (modified) power iterative method with 15 iterations. The trainset are DIV2k, containing 800 images. The loss functions in the paper [ICML](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ) for SPC-DRUNet and PC-DRUNet are 
 
 $`\mathbb{E}\|D_\sigma(x+\xi_\sigma;\theta)-x\|_1+r\max\{\|kI+(1-k)J\|_*,1-\epsilon\},`$ and $`  \mathbb{E}\|D_\sigma(x+\xi_\sigma;\theta)-x\|_1+r\max\{\|(S-2I)^{-1}S\|_*,1-\epsilon\}, `$ repectively.
 
@@ -20,7 +20,7 @@ The last term $`\|J^\mathrm{T}-J\|_*`$ is to encouraging a symmetric Jacobian, a
 
 $`f(\{z\in\mathbb{C}: real(z)\le 1\})=\{z\in \mathbb{C}: |z|\le 1\}.`$
 
-This new loss term $` \max\{\|(J-10I)^{-1}(J+8I)\|_*,1-\epsilon\} `$ has the advantage that it stablize the training, because now, the denominator is unlikely to be zero. The real part of any eigenvalue of $`J`$ is typically far from $`10`$.
+This new loss term $` \max\{\|(J-10I)^{-1}(J+8I)\|_*,1-\epsilon\} `$ has the advantage that it stablizes the training. Because now, the denominator is unlikely to be zero. The real part of any eigenvalue of $`J`$ is typically far from $`10`$.
 
 Parameter settings 
 ----
