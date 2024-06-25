@@ -41,8 +41,20 @@ $`\sigma`$ | DRUNet  | MMO | NE-DRUNet| SPC-DRUNet ($`k=0.5`$) | SPC-DRUNet ($`k
 40| 29.33 |           27.87         |28.00| 28.43|28.43|28.70|28.84|28.96|29.14
 Spectral Term |  \ | $` \|\|2J-I\|\|_* `$ | $`\|\|J\|\|_*`$ | $`\|\|0.5I+0.5J\|\|_*`$ |  $`\|\|0.6I+0.4J\|\|_*`$ |$`\|\|0.7I+0.3J\|\|_*`$ |$`\|\|0.8I+0.2J\|\|_*`$ |$`\|\|0.9I+0.1J\|\|_*`$ | $`\|\|(J-10I)^{-1}(J+8I)\|\|_*`$ 
 $`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.02|0.02|0.001|0.01
-$`Mean`$ | \ |  0.932    | 0.933 | 0.976   | 0.980 | 0.981 | 0.983| 0.971|0.9750
-$`Std`$ |  \ |     0.0454| 0.0197| 0.0157| 0.0168  |0.0153 |0.0132|0.0536|0.0752
+$`Mean`$ | \ |  0.932    | 0.933 | 0.956   | 0.950 | 0.951 | 0.953| 0.951|0.955
+$`Std`$ |  \ |     0.0454| 0.0197| 0.0137| 0.0148  |0.0133 |0.0112|0.0136|0.0150
+
+
+Table 2. Deblurring performance on CBSD68 in PSNR and SSIM values with Levin's kernels
+---
+
+Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \
+---- |---- |---- |---- |----
+Measurement| PSNR           | SSIM | PSNR            | SSIM
+
+ 
+
+
 
 
 It can be seen in Table 1 that, when $`k`$ gets larger, the assumption gets weaker, and the denoising performance gets better. When $`k\ge0.9`$, the denoisers have a satisfying denoising performance.
