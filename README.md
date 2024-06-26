@@ -51,12 +51,12 @@ Table 2. Deblurring performance on CBSD68 in PSNR and SSIM values with Levin's k
 Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \
 ---- |---- |---- |---- |----
 Measurement| PSNR           | SSIM | PSNR            | SSIM
-MMO-FBS| \ | \ | \ | \
+MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
 NE-PGD | 26.16| 0.6977| 25.37| 0.6525
 Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
 PnPI-FBS ($`k=0.5`$) | 26.70 | 0.7176 | 25.74 | 0.6732 
 PnPI-FBS ($`k=0.7`$) | 26.72 | 0.7264 | 25.91 | 0.6753
-PnPI-FBS ($`k=0.9`$) | \ | \ | \ | \
+PnPI-FBS ($`k=0.9`$) | 26.90 | 0.7252 | 25.98 | 0.6787
 PnPI-FBS ($`k=1.0`$) | \ | \ | \ | \
 PnPI-HQS ($`k=0.5`$) |27.09 | 0.7494|26.23 |0.7110 
 PnPI-HQS ($`k=0.7`$) | 27.28| 0.7559| 26.38|0.7191 
