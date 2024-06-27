@@ -5,6 +5,15 @@ This is a new baseline for DRUNet under different assumptions.
 
 We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive.
 
+
+# Pseudo-Contractive Denoisers
+
+Let $`V`$ be a real Hilbert space with inner product $`\langle\cdot,\cdot\rangle`$. $`\|\cdot\|`$ is the induced norm. $`I`$ is the identity mapping. A mapping $`D:V\rightarrow V`$ is pseudo-contractive, if there exists $`k\in [0,1]`$, such that $`\forall x,y\in V`$, we have
+
+$`\|D(x)-D(y)\|^2\le \|x-y\|^2 + k\| (I-D)(x)-(I-D)(y)\|^2. `$
+
+When $`k<1`$, $`D`$ is said to be $`k`$-strictly pseudo-contractive. Please check Lemma 2.1 to Theorem 3.3 in [ICML](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ). 
+
 A new spectral term for PC-DRUNet
 ----
 
