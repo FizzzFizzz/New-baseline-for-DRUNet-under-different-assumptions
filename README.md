@@ -5,6 +5,16 @@ This is a new baseline for DRUNet under different assumptions.
 
 We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive. Please note that in this repo, the results may be different from the repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems).
 
+# Quick Start!
+
+If you want to test it on your own, it would be beneficial if you are familiar with DPIR (https://github.com/cszn/DPIR), LMMO (https://github.com/basp-group/PnP-MMO-imaging), and Prox-PnP (https://github.com/samuro95/Prox-PnP). The code is based on these pioneer projects.
+
+Step 1: Create env according to DPIR and Prox-PnP.
+
+Step 2: Download this code, along with the pretrained models at [pretrained baseline models](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link).
+
+Step 3: Run any code starting with 'new_PnP_main_xxx.py'. You might need to create some folders in './log'.
+For example, try 'python PnP_main_SPC+HQS.py' to remove Poisson noises with PnPI-HQS.
 
 # Pseudo-Contractive Denoisers
 
