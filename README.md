@@ -7,14 +7,29 @@ We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with diff
 
 # Quick Start!
 
+How to test?
+----
 If you want to test it on your own, it would be beneficial if you are familiar with DPIR (https://github.com/cszn/DPIR), LMMO (https://github.com/basp-group/PnP-MMO-imaging), and Prox-PnP (https://github.com/samuro95/Prox-PnP). The code is based on these pioneer projects.
 
 Step 1: Create env according to DPIR and Prox-PnP.
 
 Step 2: Download this code, along with the pretrained models at [pretrained baseline models](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link).
 
-Step 3: Run any code starting with 'new_PnP_main_xxx.py'. You might need to create some folders in './log'.
-For example, try 'python PnP_main_SPC+HQS.py' to remove Poisson noises with PnPI-HQS.
+Step 3: Download the trainsets and testsets as you wish.
+
+Step 4: Run any code starting with 'new_PnP_main_xxx.py'. You might need to create some folders in './log'.
+For example, try 'new_PnP_main_09SPC+REDIPROX_deblur_color.py' to deblur with REDI-Prox.
+
+> Please note that, in Line 500 of 'new_PnP_main_09SPC+REDIPROX_deblur_color.py', plot_psnr(level,lambda, sigma) is to process single image, and the results will be stored in the folder './images'. 'level' is the denoising level of the denoiser, 'lambda' is the balancing parameter, 'sigma' is the Gaussian noise level.
+> In Line 233, you can change different test images.
+> In Line 234, you can change different kernels.
+> In Line 488, search_args() is to process a test set.
+> In Line 311, you can change the sigma value, in Line 326, you can change the test set.
+> You can fine tune the parameters in Lines 342-386. For example, in Line 342, 'search_range[0.1] = [3.5] # 27.3472, 0.7582'. 0.1 is the denoising level, and 3.5 is the balancing parameter.
+> In Line 112, you can modify the iteration number by changing 'nb=200'.
+> If you are testing images on a testset, you may need to delete or annotate the codes in Line 203-210.
+> You can write your own code, or modify the PnP algorithm, in about Line 151-220.
+> Other files have very similar structrures.
 
 # Pseudo-Contractive Denoisers
 
