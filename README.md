@@ -3,7 +3,7 @@ This is a new baseline for DRUNet under different assumptions.
 ----
 
 
-We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive.
+We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive. Please note that in this repo, the results may be different from the repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems).
 
 
 # Pseudo-Contractive Denoisers
