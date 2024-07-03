@@ -21,14 +21,23 @@ Step 4: Run any code starting with 'new_PnP_main_xxx.py'. You might need to crea
 For example, try 'new_PnP_main_09SPC+REDIPROX_deblur_color.py' to deblur with REDI-Prox.
 
 > Please note that, in Line 500 of 'new_PnP_main_09SPC+REDIPROX_deblur_color.py', plot_psnr(level,lambda, sigma) is to process single image, and the results will be stored in the folder './images'. 'level' is the denoising level of the denoiser, 'lambda' is the balancing parameter, 'sigma' is the Gaussian noise level.
+> 
 > In Line 233, you can change different test images.
+> 
 > In Line 234, you can change different kernels.
+
 > In Line 488, search_args() is to process a test set.
+
 > In Line 311, you can change the sigma value, in Line 326, you can change the test set.
+
 > You can fine tune the parameters in Lines 342-386. For example, in Line 342, 'search_range[0.1] = [3.5] # 27.3472, 0.7582'. 0.1 is the denoising level, and 3.5 is the balancing parameter.
+
 > In Line 112, you can modify the iteration number by changing 'nb=200'.
+
 > If you are testing images on a testset, you may need to delete or annotate the codes in Line 203-210.
+
 > You can write your own code, or modify the PnP algorithm, in about Line 151-220.
+
 > Other files have very similar structrures.
 
 
@@ -37,15 +46,25 @@ How to train?
 Step : Train the denoiser with spectral regularization terms to make it pseudo-contractive. You can achieve this by editting a 'xxx.json' file. The parameters need to be fine tuned very carefully. You may mainly check 'train_drunet_k_small_1_color_2024.json' and 'train_drunet_k=1_color_2024.json', for $`k`$-strictly pseudo-contractive denoisers pseudo-contractive denoisers ($`k=1`$) respectively. The training results will be saved in the folder './denoising'.
 
 > Please note that a larger $k$ typically means a better denoising performance.
+
 > You can modify the spectral regularization term in the file 'loss_jacobian.py' in Lines 29, and 316-322, or just define a new regularizer.
-> In the file 'train_drunet_k_small_1_color_2024.json', in Lines 70-77, we give the parameters for the iterative power method. For $`k<1`$, there is no inner iterations, and thus 'jacobian_dt' and 'jacobian_inner_step' are useless. In the file 'train_drunet_k=1_color_2024.json', we set 'jacobian_dt' to be 0.01, and 'jacobian_inner_step' to be 10, empirically. 
+
+> In the file 'train_drunet_k_small_1_color_2024.json', in Lines 70-77, we give the parameters for the iterative power method. For $`k<1`$, there is no inner iterations, and thus 'jacobian_dt' and 'jacobian_inner_step' are useless. In the file 'train_drunet_k=1_color_2024.json', we set 'jacobian_dt' to be 0.01, and 'jacobian_inner_step' to be 10, empirically.
+
 > 'jacobian_start_step' means where to start. For example, when it's 10000, it means that after the first 10000 iterations, we starting using the spectral regularizations.
+
 > 'jacobian_loss_weight' is the weighting parameter $`r`$ in the loss functions. It balances the denoising loss and the spectral regularization loss. When it gets larger, the denoiser is more likely to satisfy the assumptions you want, but often has worse denoising performance.
+
 > 'jacobian_checkpoint' means the frequency of the spectral regularizations. When it is 1, it means that in the training procedure, we regularize the denoiser for each training image.
+
 > 'jacobian_step' is the iteration number for the iterative power method.
+
 > 'jacobian_eps' is the $`\epsilon`$ in the loss.
+
 > 'checkpoint_test' is the frequency to test the images. I typically set it to be 10000, which means that we test the denoiser every 10000 iterations.
+
 > 'checkpoint_save' is the frequency to save the model. I typically set it to be 10000, which means that we test the denoiser every 10000 iterations.
+
 > 'checkpoint_print' is the frequency to print the loss. I typically set it to be 100, which means that we print the loss every 100 iterations.
 
 
