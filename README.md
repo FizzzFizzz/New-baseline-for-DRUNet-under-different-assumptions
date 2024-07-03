@@ -31,6 +31,25 @@ For example, try 'new_PnP_main_09SPC+REDIPROX_deblur_color.py' to deblur with RE
 > You can write your own code, or modify the PnP algorithm, in about Line 151-220.
 > Other files have very similar structrures.
 
+
+How to train?
+----
+Step : Train the denoiser with spectral regularization terms to make it pseudo-contractive. You can achieve this by editting a 'xxx.json' file. The parameters need to be fine tuned very carefully. You may mainly check 'train_drunet_k_small_1_color_2024.json' and 'train_drunet_k=1_color_2024.json', for $`k`$-strictly pseudo-contractive denoisers pseudo-contractive denoisers ($`k=1`$) respectively. The training results will be saved in the folder './denoising'.
+
+> Please note that a larger $k$ typically means a better denoising performance.
+> You can modify the spectral regularization term in the file 'loss_jacobian.py' in Lines 29, and 316-322, or just define a new regularizer.
+> In the file 'train_drunet_k_small_1_color_2024.json', in Lines 70-77, we give the parameters for the iterative power method. For $`k<1`$, there is no inner iterations, and thus 'jacobian_dt' and 'jacobian_inner_step' are useless. In the file 'train_drunet_k=1_color_2024.json', we set 'jacobian_dt' to be 0.01, and 'jacobian_inner_step' to be 10, empirically. 
+> 'jacobian_start_step' means where to start. For example, when it's 10000, it means that after the first 10000 iterations, we starting using the spectral regularizations.
+> 'jacobian_loss_weight' is the weighting parameter $`r`$ in the loss functions. It balances the denoising loss and the spectral regularization loss. When it gets larger, the denoiser is more likely to satisfy the assumptions you want, but often has worse denoising performance.
+> 'jacobian_checkpoint' means the frequency of the spectral regularizations. When it is 1, it means that in the training procedure, we regularize the denoiser for each training image.
+> 'jacobian_step' is the iteration number for the iterative power method.
+> 'jacobian_eps' is the $`\epsilon`$ in the loss.
+> 'checkpoint_test' is the frequency to test the images. I typically set it to be 10000, which means that we test the denoiser every 10000 iterations.
+> 'checkpoint_save' is the frequency to save the model. I typically set it to be 10000, which means that we test the denoiser every 10000 iterations.
+> 'checkpoint_print' is the frequency to print the loss. I typically set it to be 100, which means that we print the loss every 100 iterations.
+
+
+ 
 # Pseudo-Contractive Denoisers
 
 Let $`V`$ be a real Hilbert space with inner product $`\langle\cdot,\cdot\rangle`$. $`\|\cdot\|`$ is the induced norm. $`I`$ is the identity mapping. A mapping $`D:V\rightarrow V`$ is pseudo-contractive, if there exists $`k\in [0,1]`$, such that $`\forall x,y\in V`$, we have
