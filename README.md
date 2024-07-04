@@ -148,15 +148,15 @@ $`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
 Table 3. Deblurring performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with Levin's kernels (without PnPI-xxx)
 ---
 
-\ | \ |Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
-----| ---- |-----|---- |---- |---- |---- 
-Converge? | Denoiser| Measurement| PSNR           | SSIM | PSNR            | SSIM 
- $`\surd`$ | MMO.pth | MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
- $`\surd`$ | NE.pth |NE-PGD | 26.16| 0.6977| 25.37| 0.6525
- $`\surd`$ | Prox-DRUNet | Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
- $`\surd`$  | GS-DRUNet | SNORE | 26.94 | 0.7225 | \ | \
-$`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
- $`\surd`$ | 09SPC.pth | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
+ \ |Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
+ ---- |-----|---- |---- |---- |---- 
+ Denoiser| Measurement| PSNR           | SSIM | PSNR            | SSIM 
+ MMO.pth | MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
+NE.pth |NE-PGD | 26.16| 0.6977| 25.37| 0.6525
+ Prox-DRUNet | Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
+ GS-DRUNet | SNORE | 26.94 | 0.7225 | \ | \
+ GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
+ 09SPC.pth | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
 
 
 
