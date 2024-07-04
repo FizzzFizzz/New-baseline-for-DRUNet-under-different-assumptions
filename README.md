@@ -13,7 +13,7 @@ If you want to test it on your own, it would be beneficial if you are familiar w
 
 Step 1: Create env according to DPIR and Prox-PnP.
 
-Step 2: Download this code, along with the pretrained models at [pretrained baseline models](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link).
+Step 2: Download this code, along with the pretrained models at [pretrained baseline models link1](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link), [pretrained baseline models link2](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link).
 
 Step 3: Download the trainsets and testsets as you wish.
 
@@ -121,25 +121,25 @@ $`Std`$ |  \ |     0.0454| 0.0197| 0.0137| 0.0148  |0.0133 |0.0112|0.0136|0.0150
 Table 2. Deblurring performance on CBSD68 in PSNR and SSIM values with Levin's kernels
 ---
 
-\ |Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \
-----| ---- |---- |---- |---- |----
-Converge? | Measurement| PSNR           | SSIM | PSNR            | SSIM
- $`\surd`$ | MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
- $`\surd`$ | NE-PGD | 26.16| 0.6977| 25.37| 0.6525
- $`\surd`$ | Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
- $`\surd`$ | PnPI-GD / REDI  ($`k=1.0`$)  | 26.54 | 0.6984 | 25.80 | 0.6679
- $`\surd`$ | PnPI-FBS ($`k=0.5`$) | 26.70 | 0.7176 | 25.74 | 0.6732 
- $`\surd`$ | PnPI-FBS ($`k=0.7`$) | 26.72 | 0.7264 | 25.91 | 0.6753  
- $`\times`$ | PnPI-FBS ($`k=0.9`$) | 26.90 | 0.7252 | 25.98 | 0.6787  
- $`\times`$| PnPI-FBS ($`k=1.0`$) | 26.90 | 0.7342 | 26.04 | 0.6889 
-$`\surd`$ | PnPI-HQS ($`k=0.5`$) |27.09 | 0.7494|26.23 |0.7110 
-$`\times`$ | PnPI-HQS ($`k=0.7`$) | 27.28| 0.7559| 26.38|0.7191 
-$`\times`$ | PnPI-HQS ($`k=0.9`$) | 27.57|0.7616 | 26.57| 0.7200
-$`\times`$ | PnPI-HQS ($`k=1.0`$) | 27.65| 0.7704|26.66 |0.7306 
-$`\surd`$  | SNORE | 26.94 | 0.7225 | \ | \
-$`\surd`$  | SNORE-Prox | 26.94 | 0.7226 | \ | \
- $`\surd`$ | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
- $`?`$     | Diff-REDI-Prox ($`k=0.9`$) | 27.56 | 0.7685 | 26.60 | 0.7289
+\ | \ |Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
+----| ---- |-----|---- |---- |---- |---- 
+Converge? | Denoiser| Measurement| PSNR           | SSIM | PSNR            | SSIM 
+ $`\surd`$ | MMO.pth | MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
+ $`\surd`$ | NE.pth |NE-PGD | 26.16| 0.6977| 25.37| 0.6525
+ $`\surd`$ | Prox-DRUNet | Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
+ $`\surd`$ | PC.pth | PnPI-GD / REDI  ($`k=1.0`$)  | 26.54 | 0.6984 | 25.80 | 0.6679
+ $`\surd`$ | 05SPC.pth |PnPI-FBS ($`k=0.5`$) | 26.70 | 0.7176 | 25.74 | 0.6732 
+ $`\surd`$ | 07SPC.pth | PnPI-FBS ($`k=0.7`$) | 26.72 | 0.7264 | 25.91 | 0.6753  
+ $`\times`$ | 09SPC.pth | PnPI-FBS ($`k=0.9`$) | 26.90 | 0.7252 | 25.98 | 0.6787  
+ $`\times`$| PC.pth | PnPI-FBS ($`k=1.0`$) | 26.90 | 0.7342 | 26.04 | 0.6889 
+$`\surd`$ | 05SPC.pth | PnPI-HQS ($`k=0.5`$) |27.09 | 0.7494|26.23 |0.7110 
+$`\times`$ | 07SPC.pth | PnPI-HQS ($`k=0.7`$) | 27.28| 0.7559| 26.38|0.7191 
+$`\times`$ | 09SPC.pth | PnPI-HQS ($`k=0.9`$) | 27.57|0.7616 | 26.57| 0.7200
+$`\times`$ | PC.pth | PnPI-HQS ($`k=1.0`$) | 27.65| 0.7704|26.66 |0.7306 
+$`\surd`$  | GS-DRUNet | SNORE | 26.94 | 0.7225 | \ | \
+$`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
+ $`\surd`$ | 09SPC.pth | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
+ $`?`$     | 09SPC.pth |Diff-REDI-Prox ($`k=0.9`$) | 27.56 | 0.7685 | 26.60 | 0.7289
 
 
 
