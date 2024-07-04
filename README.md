@@ -145,6 +145,28 @@ $`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
 
 
 
+Table 3. Deblurring performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with Levin's kernels
+---
+
+\ | \ |Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
+----| ---- |-----|---- |---- |---- |---- 
+Converge? | Denoiser| Measurement| PSNR           | SSIM | PSNR            | SSIM 
+ $`\surd`$ | MMO.pth | MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
+ $`\surd`$ | NE.pth |NE-PGD | 26.16| 0.6977| 25.37| 0.6525
+ $`\surd`$ | Prox-DRUNet | Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
+ $`\surd`$ | PC.pth | PnPI-GD / REDI  ($`k=1.0`$)  | 26.54 | 0.6984 | 25.80 | 0.6679
+ $`\surd`$ | 05SPC.pth |PnPI-FBS ($`k=0.5`$) | 26.70 | 0.7176 | 25.74 | 0.6732 
+ $`\surd`$ | 07SPC.pth | PnPI-FBS ($`k=0.7`$) | 26.72 | 0.7264 | 25.91 | 0.6753  
+$`\surd`$ | 05SPC.pth | PnPI-HQS ($`k=0.5`$) |27.09 | 0.7494|26.23 |0.7110 
+$`\surd`$  | 09SPC.pth | PnPI-AHQS ($`k=0.9`$ | 27.60 | 0.7697 | 26.63 | 0.7304
+$`\surd`$  | GS-DRUNet | SNORE | 26.94 | 0.7225 | \ | \
+$`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
+ $`\surd`$ | 09SPC.pth | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
+
+
+
+
+
 It can be seen in Table 1 that, when $`k`$ gets larger, the assumption gets weaker, and the denoising performance gets better. When $`k\ge0.9`$, the denoisers have a satisfying denoising performance.
 
 
