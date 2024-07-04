@@ -136,6 +136,7 @@ $`\surd`$ | 05SPC.pth | PnPI-HQS ($`k=0.5`$) |27.09 | 0.7494|26.23 |0.7110
 $`\times`$ | 07SPC.pth | PnPI-HQS ($`k=0.7`$) | 27.28| 0.7559| 26.38|0.7191 
 $`\times`$ | 09SPC.pth | PnPI-HQS ($`k=0.9`$) | 27.57|0.7616 | 26.57| 0.7200
 $`\times`$ | PC.pth | PnPI-HQS ($`k=1.0`$) | 27.65| 0.7704|26.66 |0.7306 
+$`\surd`$  | 09SPC.pth | PnPI-AHQS ($`k=0.9`$ | 27.60 | 0.7697 | 26.63 | 0.7304
 $`\surd`$  | GS-DRUNet | SNORE | 26.94 | 0.7225 | \ | \
 $`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | \ | \
  $`\surd`$ | 09SPC.pth | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
