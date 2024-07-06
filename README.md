@@ -9,9 +9,9 @@ We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with diff
 
 How to test?
 ----
-If you want to test it on your own, it would be beneficial if you are familiar with DPIR (https://github.com/cszn/DPIR), LMMO (https://github.com/basp-group/PnP-MMO-imaging), and Prox-PnP (https://github.com/samuro95/Prox-PnP). The code is based on these pioneer projects.
+If you want to test it on your own, it would be beneficial if you are familiar with DPIR/KAIR (https://github.com/cszn/DPIR), LMMO (https://github.com/basp-group/PnP-MMO-imaging), and Prox-PnP (https://github.com/samuro95/Prox-PnP). The code is based on these pioneer projects.
 
-Step 1: Create env according to DPIR and Prox-PnP.
+Step 1: Create env according to KAIR (https://github.com/cszn/KAIR).
 
 Step 2: Download this code, along with the pretrained models at [pretrained baseline models link1](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link), [pretrained baseline models link2](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link).
 
