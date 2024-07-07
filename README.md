@@ -127,7 +127,7 @@ Converge? | Denoiser| Measurement| PSNR           | SSIM | PSNR            | SSI
  $`\surd`$ | MMO.pth | MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
  $`\surd`$ | NE.pth |NE-PGD | 26.16| 0.6977| 25.37| 0.6525
  $`\surd`$ | Prox-DRUNet | Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
- $`\surd`$ | PC.pth | PnPI-GD / REDI  ($`k=1.0`$)  | 26.54 | 0.6984 | 25.80 | 0.6679
+ $`\surd`$ | PC.pth | PnPI-GD ($`k=1.0`$)  | 27.55 | 0.7694 | 26.63 | 0.7307
  $`\surd`$ | 05SPC.pth |PnPI-FBS ($`k=0.5`$) | 26.70 | 0.7176 | 25.74 | 0.6732 
  $`\surd`$ | 07SPC.pth | PnPI-FBS ($`k=0.7`$) | 26.72 | 0.7264 | 25.91 | 0.6753  
  $`\times`$ | 09SPC.pth | PnPI-FBS ($`k=0.9`$) | 26.90 | 0.7252 | 25.98 | 0.6787  
