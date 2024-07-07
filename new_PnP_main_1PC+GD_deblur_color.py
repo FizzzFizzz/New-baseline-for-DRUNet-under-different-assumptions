@@ -113,7 +113,7 @@ def print_line(y, pth, label):
 
 # nb: default 100.
 class PnP_ADMM(nn.Module):
-    def __init__(self, in_nc=1, out_nc=1, nb=100, act_mode='R'):
+    def __init__(self, in_nc=1, out_nc=1, nb=300, act_mode='R'):
         super(PnP_ADMM, self).__init__()
         self.nb = nb
 
@@ -157,14 +157,20 @@ class PnP_ADMM(nn.Module):
         u  = f
         average = f
         K = kernel
-        a = 0.3
+        a = 0.8
         b = 0.15
+        
+        a = 0.5
+        b = 0.4
 
-        a = 0.2
-        b = 0.1
+        # a = 0.3
+        # b = 0.15
 
-        a = 0.1
-        b = 0.05
+        # a = 0.2
+        # b = 0.1
+
+        # a = 0.1
+        # b = 0.05
 
         # a = 0.05
         # b = 0.02
@@ -176,12 +182,17 @@ class PnP_ADMM(nn.Module):
         lamb_ = lamb
         d = denoisor_sigma
         t = u
+        w = u
         for k in range(self.nb):
 
-            self.get_psnr_i(torch.clamp(u, min = -0., max =255.), clean, k)
+            self.get_psnr_i(torch.clamp(w, min = -0., max =255.), clean, k)
 
             alpha = 1/( (k+1) **a )
             beta  = 1/( (k+1) **b)
+            if alpha > 0.03:
+                alpha = 0.03
+            if beta > 0.03:
+                beta = 0.03
 
             temp = abs_k * deblur.fftn(u) - fft_kH * deblur.fftn(f)
             temp = torch.real(deblur.ifftn(temp))
@@ -194,7 +205,7 @@ class PnP_ADMM(nn.Module):
             # t = t + noise
 
             v = (1-beta)*u+beta*( run_model(t,d) * 255 -lamb_*( temp ) )
-            v = torch.clamp(v, min=0, max=255.)
+            # v = torch.clamp(v, min=0, max=255.)
 
             temp = abs_k * deblur.fftn(v) - fft_kH * deblur.fftn(f)
             temp = torch.real(deblur.ifftn(temp))
@@ -205,9 +216,9 @@ class PnP_ADMM(nn.Module):
             # noise = torch.randn(t.size()).mul_(d)
             # noise = noise.type(torch.cuda.FloatTensor)
             # t = t + noise
-
-            u = (1-alpha)*u + alpha*( run_model(t,d) * 255 - lamb_*(temp))
-            u = torch.clamp(u, min=0, max=255.)
+            w = run_model(t,d) * 255
+            u = (1-alpha)*u + alpha*( w - lamb_*(temp))
+            # u = torch.clamp(u, min=0, max=255.)
 
             # ratio = 1.005
             # lamb_ = lamb_ / ratio
@@ -217,7 +228,7 @@ class PnP_ADMM(nn.Module):
             
             
         
-        return u # GD
+        return w # GD
 
 def plot_psnr(denoisor_level, lamb, sigma):
     device = 'cuda'
@@ -326,43 +337,45 @@ def search_args():
 
     search_range = {}
 
+
+
     
-    # kevin's 8 kernels, CBSD68, 12.75 noise. a=0.1, b=0.05
-    # kernel 01, 
-    search_range[0.04] = [1.8] # 26.3173, 0.6753
+    # kevin's 8 kernels, CBSD68, 12.75 noise. a=0.5, b=0.4, nb = 300, with alpha,beta <= 0.03
+    # kernel 01, [13,14,15,16,17,18,19]
+    search_range[0.1] = [17] # 27.3389, 0.7612
     # kernel 02, 
-    # search_range[0.04] = [1.8] # 26.0678, 0.6743
+    # search_range[0.1] = [17] # 27.1047, 0.7505
     # kernel 03, 
-    # search_range[0.04] = [1.8] # 26.5386, 0.7034
+    # search_range[0.1] = [18] # 27.5060, 0.7662
     # kernel 04, 
-    # search_range[0.04] = [1.8] # 25.8844, 0.6639
+    # search_range[0.1] = [18] # 26.8860, 0.7433
     # kernel 05,
-    # search_range[0.04] = [1.8] # 27.4456, 0.7382
+    # search_range[0.1] = [18] # 28.5095, 0.8046
     # kernel 06,
-    # search_range[0.04] = [1.8] # 27.2086, 0.7223
+    # search_range[0.1] = [17] # 28.2772, 0.7967
     # kernel 07,
-    # search_range[0.04] = [1.8] # 26.6335, 0.7113
+    # search_range[0.1] = [19] # 27.6499, 0.7753
     # kernel 08,
-    # search_range[0.04] = [1.8] # 26.2249, 0.6983
+    # search_range[0.1] = [18] # 27.1518, 0.7572
 
     kernel_fp = '/home/dlwei/Documents/pnp_jacobian/kernels/kevin_8.png'
-    # kevin's 8 kernels, CBSD68, 17.85 noise. a=0.2, b=0.1
+    # kevin's 8 kernels, CBSD68, 17.85 noise. a=0.5, b=0.4, nb = 300, with alpha,beta <= 0.03
     # kernel 01, 
-    search_range[0.04] = [1.3] # 25.5747, 0.6412
+    search_range[0.15] = [21] # 26.3689, 0.7203
     # kernel 02, 
-    search_range[0.04] = [1.3] # 25.3922, 0.6448
+    # search_range[0.15] = [21] # 26.1936, 0.7130
     # kernel 03, 
-    search_range[0.04] = [1.2] # 25.9132, 0.6786
+    # search_range[0.15] = [21] # 26.6686, 0.7297
     # kernel 04, 
-    search_range[0.04] = [1.3] # 25.1166, 0.6322
+    # search_range[0.15] = [20] # 25.9882, 0.7002
     # kernel 05,
-    search_range[0.04] = [1.2] # 26.5962, 0.7065
+    # search_range[0.15] = [22] # 27.5199, 0.7658
     # kernel 06,
-    # search_range[0.04] = [1.2] # 26.4706, 0.6931
+    # search_range[0.15] = [22] # 27.2577, 0.7585
     # kernel 07,
-    # search_range[0.04] = [1.2] # 25.8604, 0.6802
+    # search_range[0.15] = [23] # 26.7631, 0.7387
     # kernel 08,
-    # search_range[0.04] = [1.2] # 25.4940, 0.6667
+    # search_range[0.15] = [21] # 26.3111, 0.7194
 
     
 
@@ -373,7 +386,7 @@ def search_args():
     kernel = kernel / torch.sum(kernel)
 
 
-    search_level = [0.04]
+    search_level = [0.15]
 
     psnr_save_root  = 'log/' + 'sigma_' + str(sigma) + '/psnr'
     ssim_save_root  = 'log/' + 'sigma_' + str(sigma) + '/ssim'
@@ -478,12 +491,18 @@ def search_args():
 
 
 max_psnr, max_level, max_lamb = search_args()
-# PnPI-GD 0026.png, kernel 6.
-# plot_psnr(0.04, 1.2 , 17.85)
 
-# PnPI-GD 0037.png, kernel 2.
-# plot_psnr(0.04, 2.0 , 12.75) # 23.92
-# plot_psnr(0.05, 2.0 , 12.75) # 23.41
+## new strategy, 20240706, output w, without clamp. a = 0.5, b = 0.4, nb = 500
+# plot_psnr(0.04, 3.0, 12.75) # 24.41
+## new strategy, 20240706, output w, without clamp. a = 0.5, b = 0.4, nb = 500
+# plot_psnr(0.05, 3.8, 12.75) # 24.46
+## new strategy, 20240706, output w, without clamp. a = 0.5, b = 0.4, nb = 500, with alpha,beta <= 0.1
+# plot_psnr(0.05, 4.6, 12.75) # 24.58
+## new strategy, 20240706, output w, without clamp. a = 0.5, b = 0.4, nb = 200, with alpha,beta <= 0.05
+# plot_psnr(0.1, 16, 12.75) # 24.9151 # chosen !!!!!!!!!!!
+
+## new strategy, 20240706, output w, without clamp. a = 0.5, b = 0.4, nb = 300, with alpha,beta <= 0.03
+# plot_psnr(0.15, 21, 17.85) # 24.15 # chosen !!!!!!!!!!!
 
 
 
