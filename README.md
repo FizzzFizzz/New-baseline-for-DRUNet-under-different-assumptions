@@ -148,17 +148,17 @@ $`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | 25.78 | 0.6548
 Table 3. Deblurring performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with Levin's kernels
 ---
 
-Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
------|---- |---- |---- |---- 
- Measurement| PSNR           | SSIM | PSNR            | SSIM 
- MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
-NE-PGD | 26.16| 0.6977| 25.37| 0.6525
- Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
- PnPI-GD ($`k=1.0`$)  | 27.55 | 0.7694 | 26.63 | 0.7307
- PnPI-AHQS ($`k=0.9`$) | 27.60 | 0.7697 | 26.63 | 0.7304
- SNORE | 26.94 | 0.7225 | 25.77 | 0.6546
-SNORE-Prox | 26.94 | 0.7226 | 25.78 | 0.6548
- REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
+\ | Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
+----|-----|---- |---- |---- |---- 
+ Pub | Measurement| PSNR           | SSIM | PSNR            | SSIM 
+SIIMS 2021 |  MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
+Neurips 2021 | NE-PGD | 26.16| 0.6977| 25.37| 0.6525
+ICML 2022 |  Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
+ICML 2024 |PnPI-GD ($`k=1.0`$)  | 27.55 | 0.7694 | 26.63 | 0.7307
+ICML 2024 |PnPI-AHQS ($`k=0.9`$) | 27.60 | 0.7697 | 26.63 | 0.7304
+ICML 2024 |SNORE | 26.94 | 0.7225 | 25.77 | 0.6546
+ICML 2024 |SNORE-Prox | 26.94 | 0.7226 | 25.78 | 0.6548
+TBD | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
 
 
 
