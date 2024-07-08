@@ -349,7 +349,7 @@ def search_args():
     # search_range[0.1] = [18] # 27.5060, 0.7662
     # kernel 04, 
     # search_range[0.1] = [18] # 26.8860, 0.7433
-    # kernel 05,
+    # kernel 05, 
     # search_range[0.1] = [18] # 28.5095, 0.8046
     # kernel 06,
     # search_range[0.1] = [17] # 28.2772, 0.7967
