@@ -108,7 +108,7 @@ def print_line(y, pth, label):
     plt.savefig(pth)
     plt.close()    
 
-# nb: default 100.
+# nb: default 101.
 class PnP_ADMM(nn.Module):
     def __init__(self, in_nc=1, out_nc=1, nb=101, act_mode='R'):
         super(PnP_ADMM, self).__init__()
@@ -152,7 +152,7 @@ class PnP_ADMM(nn.Module):
         # init
         f *= 255
         u  = f
-
+        v  = f
         K = kernel
 
         a = 0.05
@@ -177,14 +177,14 @@ class PnP_ADMM(nn.Module):
 
             out = run_model(t/255,d) * 255
             v = (1-beta)*u+beta*(step*out+(1-step)*t)
-            fenzi = deblur.fftn(u) + lamb_ * fft_kH*deblur.fftn(f)
+            fenzi = deblur.fftn(v) + lamb_ * fft_kH*deblur.fftn(f)
             t = torch.real(deblur.ifftn(fenzi/fenmu))
             t = t.type(torch.cuda.FloatTensor)
             
             t = t.type(torch.cuda.FloatTensor)
             out_ = run_model(t/255,d) * 255
             u = (1-alpha)*u+alpha*(step*out+(1-step)*t)
-            fenzi = deblur.fftn(v) + lamb_ * fft_kH*deblur.fftn(f)
+            fenzi = deblur.fftn(u) + lamb_ * fft_kH*deblur.fftn(f)
             t = torch.real(deblur.ifftn(fenzi/fenmu))
             t = t.type(torch.cuda.FloatTensor)
             
@@ -269,36 +269,7 @@ def gen_data(img_clean_uint8, sigma,kernel):
     initial_uv = img_L
     return initial_uv, img_L, img_H
 
-def MedianFilter(f, k=3, padding=None):  # 进行中值滤波，选择的是忽略边缘的滤波方式
-    imarray = f
-    # img_H = util.uint2single
-    # imarray = np.array(Image.open(src).convert('L'))  # 也可以采用convert直接转换成灰度图
-    # print(imarray.shape)
-    n1, n2, height, width = imarray.shape
-    
-    if not padding:  # 当没有边缘时
-        edge = int((k - 1) / 2)  # 边缘忽略值
-        if height - 1 - edge <= edge or width - 1 - edge <= edge:
-            print("The parameter k is to large.")
-            return None
-        new_arr = imarray
-        for i in range(height):
-            for j in range(width):
-                if i <= edge - 1 or i >= height - 1 - edge or j <= edge - 1 or j >= height - edge - 1:
-                    new_arr[0,0,i, j] = imarray[0, 0, i, j]
-                else:  # 没有设计排序算法，直接使用Numpy中的寻找中值函数
-                    a = np.median(imarray[0, 0, i - edge:i + edge + 1, j - edge:j + edge + 1])
-                    a = torch.tensor(a)
-                    new_arr[0,0,i, j] = a
-    return new_arr
-        # new_im = Image.fromarray(new_arr)
-        # new_im.save(dst)
 
-
-# src = "E:\kong\Pycharm\homework\lena_saltpepper.jpg"
-# dst = "E:\kong\Pycharm\homework\lena_saltpepper_finish.jpg"
-
-# MedianFilter(src, dst)
 
 
 
@@ -333,42 +304,42 @@ def search_args():
 
     
     
-    # kevin's 8 kernels, CBSD68, 12.75 noise,  101itr
+    # kevin's 8 kernels, CBSD68, 12.75 noise,  101itr, [3.5,3.7,3.9,4.1,4.3,4.5]
     # kernel 01, 
-    search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [3.5] # 27.3467, 0.7582
     # kernel 02, 
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [3.7] # 27.1403, 0.7518
     # kernel 03, 
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [4.1] # 27.5986, 0.7698
     # kernel 04, 
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [3.7] # 26.9299, 0.7419
     # kernel 05,
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [3.9] # 28.5335, 0.8041
     # kernel 06,
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [3.7] # 28.2769, 0.7962
     # kernel 07,
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [4.3] # 27.6816, 0.7761
     # kernel 08,
-    # search_range[0.1] = [3.5,3.7,3.9,4.1,4.3,4.5] # 
+    # search_range[0.1] = [4.1] # 27.2497, 0.7595
 
-    kernel_fp = '/home/dlwei/Documents/pnp_jacobian/kernels/kevin_8.png'
-    # kevin's 8 kernels, CBSD68, 17.85 noise,  101itr
+    kernel_fp = '/home/dlwei/Documents/pnp_jacobian/kernels/kevin_2.png'
+    # kevin's 8 kernels, CBSD68, 17.85 noise,  101itr,  [4.3,4.5,4.7,4.9,5.1,5.3]
     # kernel 01, 
-    search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    search_range[0.15] = [4.3] # 26.3541, 0.7174
     # kernel 02, 
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    search_range[0.15] = [4.5] # 26.1982, 0.7134
     # kernel 03,  
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    # search_range[0.15] = [4.7] # 26.7107, 0.7313
     # kernel 04, 
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] #
+    # search_range[0.15] = [4.5] # 25.9988, 0.7040
     # kernel 05,
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    # search_range[0.15] = [4.9] # 27.4998, 0.7652
     # kernel 06,
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    # search_range[0.15] = [4.5] # 27.2230, 0.7556
     # kernel 07,
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    # search_range[0.15] = [5.1] # 26.7520, 0.7374 
     # kernel 08,
-    # search_range[0.15] = [4.3,4.5,4.7,4.9,5.1,5.3] # 
+    # search_range[0.15] = [4.7] # 26.3374, 0.7190
 
 
 
@@ -460,13 +431,15 @@ def search_args():
                     max_psnr   = cur_avg_psnr
                     max_level  = denoisor_level
                     max_lamb   = lamb
+                    max_ssim   = cur_avg_ssim
                     # max_sigma2 = sigma2
                     # print(model.res['l'])
 
 
     logger.info('========================================')
     logger.info('========================================')
-    logger.info('max_psnr: {}'.format(max_psnr))
+    logger.info('max_psnr: {:.4f}'.format(max_psnr))
+    logger.info('max_ssim: {:.4f}'.format(max_ssim))
     logger.info('level: {}'.format(max_level))
     logger.info('lamb: {}'.format(max_lamb))
     return max_psnr, max_level, max_lamb
