@@ -3,15 +3,22 @@ This is a new baseline for DRUNet under different assumptions.
 ----
 
 
-We are currently retraining each denoisers (MMO, NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive. Please note that in this repo, the results may be different from the repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems).
+We are currently retraining each denoisers ([MMO](https://github.com/matthieutrs/LMMO_lightning), NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive. Please note that in this repo, the results may be different from the repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems).
+
+
+A new strategy in plug-and-play Ishikawa algorithms
+----
+
+Different from the original paper [ICML](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ), we replace the denoiser $` D_\sigma`$ in PnPI-GD, PnPI-HQS, PnPI-FBS with $` \tilde{D}_\sigma = 0.2D_\sigma+ 0.8I`$. Then, when $`D_\sigma `$ is pseudo-contractive, we can see that $`\tilde{D}_\sigma`$ is also pseudo-contractive. When $`D_\sigma`$ is 0.9-strictly pseudo-contractive, one can prove that $`\tilde{D}`$ is 0.5-strictly pseudo-contractive. Therefore, according to our theory, the three methods converge. In experiments, we find that this new strategy is very powerful, that it stablizes the PnP restoration procedure, and provides better restoration results.
+
 
 # Quick Start!
 
 How to test?
 ----
-If you want to test it on your own, it would be beneficial if you are familiar with DPIR/KAIR (https://github.com/cszn/DPIR), LMMO (https://github.com/basp-group/PnP-MMO-imaging), and Prox-PnP (https://github.com/samuro95/Prox-PnP). The code is based on these pioneer projects.
+If you want to test it on your own, it would be beneficial if you are familiar with [DPIR](https://github.com/cszn/DPIR)/[KAIR](https://github.com/cszn/KAIR), [LMMO](https://github.com/basp-group/PnP-MMO-imaging), and [Prox-PnP](https://github.com/samuro95/Prox-PnP). The code is based on these pioneer projects.
 
-Step 1: Create env according to KAIR (https://github.com/cszn/KAIR).
+Step 1: Create env according to [KAIR](https://github.com/cszn/KAIR).
 
 Step 2: Download this code, along with the pretrained models at [pretrained baseline models link1](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link), [pretrained baseline models link2](https://drive.google.com/drive/folders/1-FC9koWoKar7RDJEjU154_K6GTs8NfMO?usp=drive_link).
 
@@ -94,6 +101,9 @@ $`f(\{z\in\mathbb{C}: real(z)\le 1\})=\{z\in \mathbb{C}: |z|\le 1\}.`$
 
 This new loss term $` \max\{\|(J-10I)^{-1}(J+8I)\|_*,1-\epsilon\} `$ has the advantage that it stablizes the training. Because now, the denominator is unlikely to be zero. The real part of any eigenvalue of $`J`$ is typically far from $`10`$.
 
+
+
+
 Parameter settings 
 ----
 
@@ -116,11 +126,9 @@ $`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.02|0.02|0.01|0.01
 $`Mean`$ | \ |  0.932    | 0.933 | 0.956   | 0.950 | 0.951 | 0.953| 0.951|0.955
 $`Std`$ |  \ |     0.0454| 0.0197| 0.0137| 0.0148  |0.0133 |0.0112|0.0136|0.0150
 
-
-
-Table 2. Deblurring performance on CBSD68 in PSNR and SSIM values with Levin's kernels
+<!--
+ Table 2. Deblurring performance on CBSD68 in PSNR and SSIM values with Levin's kernels
 ---
-
 \ | \ |Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
 ----| ---- |-----|---- |---- |---- |---- 
 Converge? | Denoiser| Measurement| PSNR           | SSIM | PSNR            | SSIM 
@@ -141,23 +149,23 @@ $`\surd`$  | GS-DRUNet | SNORE | 26.94 | 0.7225 | 25.77 | 0.6546
 $`\surd`$  | GS-DRUNet |SNORE-Prox | 26.94 | 0.7226 | 25.78 | 0.6548
  $`\surd`$ | 09SPC.pth | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
  $`?`$     | 09SPC.pth |Diff-REDI-Prox ($`k=0.9`$) | 27.56 | 0.7685 | 26.60 | 0.7289
+-->
 
 
-
-
-Table 3. Deblurring performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with Levin's kernels
+Table 2. Deblurring performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with Levin's kernels
 ---
 
 \ | Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
 ----|-----|---- |---- |---- |---- 
  Pub | Measurement| PSNR           | SSIM | PSNR            | SSIM 
-SIIMS 2021 |  MMO-FBS| 26.03 | 0.6871 | 25.30 | 0.6424
+SIIMS 2021 |  [MMO-FBS](https://github.com/matthieutrs/LMMO_lightning) | 26.03 | 0.6871 | 25.30 | 0.6424
 Neurips 2021 | NE-PGD | 26.16| 0.6977| 25.37| 0.6525
-ICML 2022 |  Prox-DRS| 26.64| 0.7200 |25.99 |0.6900 
+ICML 2022 | [Prox-DRS](https://github.com/samuro95/Prox-PnP) | 26.64| 0.7200 |25.99 |0.6900 
 ICML 2024 |PnPI-GD ($`k=1.0`$)  | 27.55 | 0.7694 | 26.63 | 0.7307
-ICML 2024 |PnPI-AHQS ($`k=0.9`$) | 27.60 | 0.7697 | 26.63 | 0.7304
-ICML 2024 |SNORE | 26.94 | 0.7225 | 25.77 | 0.6546
-ICML 2024 |SNORE-Prox | 26.94 | 0.7226 | 25.78 | 0.6548
+ICML 2024 |PnPI-HQS ($`k=0.9`$) | 27.60 | 0.7697 | 26.63 | 0.7304
+ICML 2024 | PnPI-FBS ($`k=0.9`$) | 27.58 | 0.7699 | 26.68 | 0.7333
+ICML 2024 | [SNORE](https://github.com/Marien-RENAUD/SNORE) | 26.94 | 0.7225 | 25.77 | 0.6546
+ICML 2024 | [SNORE-Prox](https://github.com/Marien-RENAUD/SNORE) | 26.94 | 0.7226 | 25.78 | 0.6548
 TBD | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
 
 
