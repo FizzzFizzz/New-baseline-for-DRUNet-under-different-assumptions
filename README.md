@@ -172,6 +172,10 @@ Table 2. Super-resolution performance on CBSD68 by different convergent PnP meth
 ---
 scale | \ | s=2 | \ | \ | s=4 | \ | 
 ----|-----|---- |---- |---- |---- |---- 
+$`\sigma`$ | 0 | 2.55 | 7.65 | 0 | 2.55 | 7.65
+[MMO-FBS](https://github.com/matthieutrs/LMMO_lightning) | 27.02 | 26.16 | 25.28 | 25.30 | 25.17 | 24.51 
+
+
 
 
 
