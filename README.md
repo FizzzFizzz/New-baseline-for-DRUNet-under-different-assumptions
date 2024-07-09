@@ -126,6 +126,8 @@ $`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.02|0.02|0.01|0.01
 $`Mean`$ | \ |  0.932    | 0.933 | 0.956   | 0.950 | 0.951 | 0.953| 0.951|0.955
 $`Std`$ |  \ |     0.0454| 0.0197| 0.0137| 0.0148  |0.0133 |0.0112|0.0136|0.0150
 
+It can be seen in Table 1 that, when $`k`$ gets larger, the assumption gets weaker, and the denoising performance gets better. When $`k\ge0.9`$, the denoisers have a satisfying denoising performance.
+
 <!--
  Table 2. Deblurring performance on CBSD68 in PSNR and SSIM values with Levin's kernels
 ---
