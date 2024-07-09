@@ -192,7 +192,7 @@ ICML 2024 | [SNORE](https://github.com/Marien-RENAUD/SNORE) | 26.94 | 0.7225 | 2
 ICML 2024 | [SNORE-Prox](https://github.com/Marien-RENAUD/SNORE) | 26.94 | 0.7226 | 25.78 | 0.6548
 TBD | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
 
-Table 2. Super-resolution performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with a Gaussian blur kernel, different scales, and different noise levels.
+Table 3. Super-resolution performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with a Gaussian blur kernel, different scales, and different noise levels.
 ---
 scale | \ | s=2 | \ | \ | s=4 | \ | 
 ----|-----|---- |---- |---- |---- |---- 
@@ -212,8 +212,6 @@ PnPI-FBS ($`k=0.9`$) | \ | 26.98 | 25.91 | \ | 25.42 | 24.76
 
 
 
-
-It can be seen in Table 1 that, when $`k`$ gets larger, the assumption gets weaker, and the denoising performance gets better. When $`k\ge0.9`$, the denoisers have a satisfying denoising performance.
 
 
 Overall, this repo provides a more accurate evaluation for each denoiser. We will continue updating the denoising performance results, and the PnP restoration results. This will serve as a new baseline. 
