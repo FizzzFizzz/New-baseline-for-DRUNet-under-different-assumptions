@@ -116,6 +116,22 @@ Results
 Table 1. Denoising performance on CBSD68 in PSNR values
 ---
 
+$`\sigma`$ | DRUNet  | MMO | NE-DRUNet| SPC-DRUNet ($`k=0.5`$)  | SPC-DRUNet ($`k=0.7`$)  |  SPC-DRUNet ($`k=0.9`$) |  PC-DRUNet ($`k=1`$)
+---- | ----- | ------ | ---- | ----- | ------  |---- | ----- 
+15 | 34.14 |         32.21          |32.54| 33.30|33.48|33.67|34.01
+25 | 31.54|         29.99           |30.12| 30.55|30.94|31.36|31.44
+40| 29.33 |           27.87         |28.00| 28.43|28.70|28.96|29.14
+Spectral Term |  \ | $` \|\|2J-I\|\|_* `$ | $`\|\|J\|\|_*`$ | $`\|\|0.5I+0.5J\|\|_*`$  |$`\|\|0.7I+0.3J\|\|_*`$ |$`\|\|0.9I+0.1J\|\|_*`$ | $`\|\|(J-10I)^{-1}(J+8I)\|\|_*`$ 
+$`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.01|0.01
+$`Mean`$ | \ |  0.932    | 0.933 | 0.956    | 0.951 | 0.951|0.955
+$`Std`$ |  \ |     0.0454| 0.0197| 0.0137| 0.0133 |0.0136|0.0150
+
+
+
+<!--
+Table 1. Denoising performance on CBSD68 in PSNR values
+---
+
 $`\sigma`$ | DRUNet  | MMO | NE-DRUNet| SPC-DRUNet ($`k=0.5`$) | SPC-DRUNet ($`k=0.6`$) | SPC-DRUNet ($`k=0.7`$) |  SPC-DRUNet ($`k=0.8`$) |  SPC-DRUNet ($`k=0.9`$) |  PC-DRUNet ($`k=1`$)
 ---- | ----- | ------ | ---- | ----- | ------  |---- | ----- | ------  | ------ 
 15 | 34.14 |         32.21          |32.54| 33.30|33.43|33.48|33.66|33.67|34.01
@@ -125,6 +141,12 @@ Spectral Term |  \ | $` \|\|2J-I\|\|_* `$ | $`\|\|J\|\|_*`$ | $`\|\|0.5I+0.5J\|\
 $`r`$ | \ | 0.01 | 0.02|0.02|0.02|0.02|0.02|0.01|0.01
 $`Mean`$ | \ |  0.932    | 0.933 | 0.956   | 0.950 | 0.951 | 0.953| 0.951|0.955
 $`Std`$ |  \ |     0.0454| 0.0197| 0.0137| 0.0148  |0.0133 |0.0112|0.0136|0.0150
+-->
+
+
+
+
+
 
 It can be seen in Table 1 that, when $`k`$ gets larger, the assumption gets weaker, and the denoising performance gets better. When $`k\ge0.9`$, the denoisers have a satisfying denoising performance.
 
