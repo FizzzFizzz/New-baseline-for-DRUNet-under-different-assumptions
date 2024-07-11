@@ -186,7 +186,7 @@ Table 2. Deblurring performance on CBSD68 by different convergent PnP methods in
 \ | Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
 ----|-----|---- |---- |---- |---- 
  Pub | Measurement| PSNR           | SSIM | PSNR            | SSIM 
-TPAMI 2021 | [DPIR](https://github.com/cszn/DPIR) | 27.65 | 0.7738 | 26.75 | 0.7293
+TPAMI 2021 | [DPIR, no convergence guarantee](https://github.com/cszn/DPIR) | 27.65 | 0.7738 | 26.75 | 0.7293
 SIIMS 2021 |  [MMO-FBS](https://github.com/matthieutrs/LMMO_lightning) | 26.03 | 0.6871 | 25.30 | 0.6424
 Neurips 2021 | NE-PGD | 26.16| 0.6977| 25.37| 0.6525
 ICML 2022 | [Prox-DRS](https://github.com/samuro95/Prox-PnP) | 26.64| 0.7200 |25.99 |0.6900 
@@ -202,6 +202,8 @@ Table 3. Super-resolution performance on CBSD68 by different convergent PnP meth
 scale | \ | s=2 | \ | \ | s=4 | \ | 
 ----|-----|---- |---- |---- |---- |---- 
 $`\sigma`$ | 0 | 2.55 | 7.65 | 0 | 2.55 | 7.65
+[DPIR, no convergence guarantee](https://github.com/cszn/DPIR) | 29.95 | 27.06 | 25.77 | 25.82 | 25.42 | 24.68 
+TPAMI 2021 | 0.8677 | 0.7615 | 0.6993 | 0.7099 | 0.6808 | 0.6398
 [MMO-FBS](https://github.com/matthieutrs/LMMO_lightning) | 27.02 | 26.16 | 25.28 | 25.30 | 25.17 | 24.51 
 SIIMS 2021 | 0.7719 | 0.7142 | 0.6604 | 0.6692 | 0.6602  | 0.6285
 NE-PGD | 27.02 | 26.23 | 25.27 | 25.34 | 25.21 | 24.54 
