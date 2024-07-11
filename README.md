@@ -186,6 +186,7 @@ Table 2. Deblurring performance on CBSD68 by different convergent PnP methods in
 \ | Noise level |$`\sigma=12.75`$|  \    |$`\sigma=17.85`$ | \  
 ----|-----|---- |---- |---- |---- 
  Pub | Measurement| PSNR           | SSIM | PSNR            | SSIM 
+TPAMI 2021 | [DPIR](https://github.com/cszn/DPIR) | 27.65 | 0.7738 | 26.75 | 0.7293
 SIIMS 2021 |  [MMO-FBS](https://github.com/matthieutrs/LMMO_lightning) | 26.03 | 0.6871 | 25.30 | 0.6424
 Neurips 2021 | NE-PGD | 26.16| 0.6977| 25.37| 0.6525
 ICML 2022 | [Prox-DRS](https://github.com/samuro95/Prox-PnP) | 26.64| 0.7200 |25.99 |0.6900 
