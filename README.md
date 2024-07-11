@@ -5,6 +5,10 @@ This is a new baseline for DRUNet under different assumptions.
 
 We are currently retraining each denoisers ([MMO](https://github.com/matthieutrs/LMMO_lightning), NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive. Please note that in this repo, the results may be different from the repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems).
 
+Check out our poster!
+----
+![alt text](https://github.com/FizzzFizzz/New-baseline-for-DRUNet-under-different-assumptions/blob/main/poster_ICML2024.png)
+
 
 A new strategy in plug-and-play Ishikawa algorithms
 ----
@@ -209,6 +213,7 @@ PnPI-HQS ($`k=0.9`$) | 30.36 | 26.98 | 25.89 | 25.80 | 25.48 | 24.78
 ICML 2024                    | 0.8822 | 0.7487 | 0.6977 | 0.7083 | 0.6822 | 0.6453
 PnPI-FBS ($`k=0.9`$) | 29.53 | 26.98 | 25.91 | 25.56 | 25.42 | 24.76 
 ICML 2024  | 0.8710 | 0.7453 | 0.6995 | 0.6930  |0.6734 | 0.6449
+
 
 
 
