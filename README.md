@@ -1,7 +1,15 @@
 # New-baseline-for-DRUNet-under-different-assumptions
-This is a new baseline for DRUNet under different assumptions. 
+
+Please note that
 ----
 
+This repo serves as a baseline and the source code for the paper [Learning Pseudo-Contractive Denoisers for Inverse Problems ICML2024](https://openreview.net/forum?id=G0vZ5ENrJQ&noteId=G0vZ5ENrJQ). We are testing several methods on the deblurring and super-resolution plug-and-play tasks. 
+
+Please note that we also provide an old repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems). 
+
+
+This is a new baseline for DRUNet under different assumptions. 
+----
 
 We are currently retraining each denoisers ([MMO](https://github.com/matthieutrs/LMMO_lightning), NE-DRUNet, SPC-DRUNet with different $k$, and PC-DRUNet) with power iterative method and a modified power iterative method. PC denotes pseudo-contractive, SPC denotes strictly pseudo-contractive. Please note that in this repo, the results may be different from the repo [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems). If you want to use the old repo, please refer to [pseudo-contractive denoisers](https://github.com/FizzzFizzz/Learning-Pseudo-Contractive-Denoisers-for-Inverse-Problems).
 
