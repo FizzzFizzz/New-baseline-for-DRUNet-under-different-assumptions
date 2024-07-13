@@ -203,6 +203,7 @@ ICML 2024 |PnPI-HQS ($`k=0.9`$) | 27.60 | 0.7697 | 26.63 | 0.7304
 ICML 2024 | PnPI-FBS ($`k=0.9`$) | 27.58 | 0.7699 | 26.68 | 0.7333
 ICML 2024 | [SNORE](https://github.com/Marien-RENAUD/SNORE) | 26.94 | 0.7225 | 25.77 | 0.6546
 ICML 2024 | [SNORE-Prox](https://github.com/Marien-RENAUD/SNORE) | 26.94 | 0.7226 | 25.78 | 0.6548
+CVPR 2023 | [DiffPIR](https://github.com/yuanzhi-zhu/DiffPIR) | 25.38 | 0.6609 | 24.64 | 0.6272
 TBD | REDI-Prox ($`k=0.9`$) | 27.59 | 0.7682 | 26.63 | 0.7296
 
 Table 3. Super-resolution performance on CBSD68 by different convergent PnP methods in PSNR and SSIM values with a Gaussian blur kernel, different scales, and different noise levels.
